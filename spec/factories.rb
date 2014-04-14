@@ -7,7 +7,7 @@ FactoryGirl.define do
   end
 
   factory :question do
-    header 'A Question'
+    header { Faker::Lorem.words(4).join(" ")}
     content 'Some content'
   end
 end
