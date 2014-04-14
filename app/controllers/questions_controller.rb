@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   def index
     @questions = Question.all
+
   end
 
   def new
@@ -18,7 +19,14 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @answer = Answer.new
     @question = Question.find(params[:id])
+  end
+
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    redirect_to questions_path, :notice => 'Question Deleted'
   end
 
   private

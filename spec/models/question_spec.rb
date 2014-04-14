@@ -5,4 +5,5 @@ describe Question do
   it { should validate_presence_of :header }
   it { should validate_presence_of :content }
   it { should validate_uniqueness_of :header }
+  it { should have_many :answers }
 end
