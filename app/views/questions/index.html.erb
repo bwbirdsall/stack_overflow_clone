@@ -1,1 +1,11 @@
 <h1>Here Live a Bunch of Questions</h1>
+
+<ul>
+  <% @questions.each do |question| %>
+    <li><%= link_to question.content, question_path(question) %></li>
+  <% end %>
+</ul>
+<br>
+<p><% if user_signed_in? %>
+  <%= link_to "Ask a Question", new_question_path, :class => 'btn btn-sm btn-info' %>
+<% end %></p>
