@@ -3,3 +3,20 @@
   font-weight: 600;
   color: slategray;
 }
+
+.logo {
+  font-family: 'Share Tech Mono' ;
+  font-size: 50px;
+  font-weight: 700;
+
+}
+
+.logo a {
+  color: peru;
+}
+
+.logo a:hover {
+  color: peru;
+  text-decoration: none;
+}
+

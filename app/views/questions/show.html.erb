@@ -10,16 +10,17 @@
       <li>
         <%= answer.content %>
         <br/>- <span class="contributer">Answerer: <%= answer.user.username %></span>
-        <% if answer.user_id == current_user.id %>
-          <%= link_to "Edit this answer", edit_answer_path(answer), id: "edit_answer_link", remote: true, :class => 'btn btn-info btn-sm' %>
+        <% if answer.user == current_user %>
+          <%= link_to "Edit this answer", edit_answer_path(answer), id: "edit_answer_link", remote: true, :class => 'btn btn-info btn-xs' %>
         <% end %>
       </li>
     </div>
   <% end %>
 </ul>
 
-
-<%= link_to "Add an Answer", new_question_answer_path(@question), id: "new_answer_link", remote: true, :class => 'btn btn-info' %>
+<% if user_signed_in? %>
+  <%= link_to "Add an Answer", new_question_answer_path(@question), id: "new_answer_link", remote: true, :class => 'btn btn-info' %>
+<% end %>
 
 <br/>
 
