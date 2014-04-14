@@ -1,0 +1,9 @@
+
+development:
+  adapter: postgresql
+  database: heap_overflow_development
+
+test:
+  adapter: postgresql
+  database: heap_overflow_test
+
