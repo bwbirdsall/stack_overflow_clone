@@ -12,6 +12,7 @@ gem 'faker'
 gem 'bcrypt'
 gem 'devise'
 gem 'bootstrap-sass'
+gem 'pry'
 
 group :development do
   gem 'better_errors'

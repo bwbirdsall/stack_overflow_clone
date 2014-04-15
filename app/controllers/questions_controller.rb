@@ -21,6 +21,7 @@ class QuestionsController < ApplicationController
   def show
     @answer = Answer.new
     @question = Question.find(params[:id])
+    @best_answer = Answer.find_by(:is_best => true)
   end
 
   def destroy

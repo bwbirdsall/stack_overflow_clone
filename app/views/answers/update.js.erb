@@ -1,0 +1,19 @@
+$(".best-answer").text("");
+$('#edit_answer_<%= @answer.id %>').parent().appendTo('.best-answer');
+
+$("#other-answers").text("");
+<% @answer.question.answers.each do |answer| %>
+  <% if answer != @answer %>
+    $("#other-answers").append('<li><%= answer.content %><br>- <span class="contributer">Answerer: <%= answer.user.username%></span>'
+          +'<% if answer.user == current_user %>'
+          + '<%= link_to "Edit this answer", edit_answer_path(answer), id: "edit_answer_link", remote: true, :class => "btn btn-info btn-xs" %>'
+          +'<% end %>'
+          +'<% if answer.question.user == current_user %>'
+          + '<%= form_for answer, remote: true, :class => "form-inline" do |f| %>'
+          + '<%= f.hidden_field :is_best, :value => true %>'
+          + '<%= f.submit "Mark as Best Answer", :class => "btn btn-xs btn-info", :id => "mark-best" %>'
+          + '<% end %>'
+          + '<% end %>'
+          + '</li>')
+  <% end %>
+<% end %>

@@ -1,3 +1,5 @@
+require 'pry'
+
 class AnswersController < ApplicationController
   def new
     @answer = Answer.new
@@ -11,8 +13,11 @@ class AnswersController < ApplicationController
 
   def update
     @answer = Answer.find(params[:id])
+    if params[:answer][:is_best]
+      Answer.reset_is_best(@answer.question.id)
+    end
     if @answer.update(answer_params)
-      redirect_to question_path(@answer.question), :notice => 'Answer updated!'
+
     else
       @question = @answer.question
       render 'questions/show.html.erb'
@@ -37,6 +42,6 @@ class AnswersController < ApplicationController
 
   private
   def answer_params
-    params.require(:answer).permit(:content, :user_id, :question_id)
+    params.require(:answer).permit(:content, :user_id, :question_id, :is_best)
   end
 end
